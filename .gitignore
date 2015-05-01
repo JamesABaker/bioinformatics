@@ -1,0 +1,40 @@
+#Default formats
+*.aux
+*.glo
+*.idx
+*.log
+*.toc
+*.ist
+*.acn
+*.acr
+*.alg
+*.bbl
+*.blg
+*.dvi
+*.glg
+*.gls
+*.ilg
+*.ind
+*.lof
+*.lot
+*.maf
+*.mtc
+*.mtc1
+*.out
+*.synctex.gz
+*.tcp
+*.tps
+*.nav
+*.snm
+*.xdy
+
+#Here are the formats specific to this project that should be ignored: generally input files.
+*.dat
+*.txt
+*.fasta
+
+#Here are specific input folders that should be ignored
+/input/*
+/output/*
+/GOOD-BAD/previous
+/Kyte&Doolittle/input
