@@ -23,7 +23,8 @@ import numpy
 
 #These are the variables that are repeatedly used throughout the script.
 
-filenames = ["input/bsubtilis168.txt"] ##########CHANGE THIS TO "YOUR.dat" FILE############
+filename = "bsubtilis168"
+filenames = ["input/%s.txt" %filename] ##########CHANGE THIS TO "YOUR.dat" FILE############
 
 
 
@@ -48,6 +49,11 @@ for filename in filenames:
 
             #if the feature is a TRANSMEM region then...
             if f.type == feature_type:
+                flank1 = record.seq[(f.location.start-5):(f.location.start)]
+                flank2 = record.seq[(f.location.end):(f.location.end+5)]
+                TMD = f.extract(record.seq)
+                flanks_and_TMD = record.seq[(f.location.start-5):(f.location.end+5)]
+                flanks_and_TMD_reversed = flanks_and_TMD[::-1]
 
 
 
@@ -66,12 +72,12 @@ for filename in filenames:
                         ###Cytoplasmic facing###
                         #Checks that the next feature is a cytoplasmic region
                         if "Cytoplasmic" in str(next_feature.qualifiers):
-
-                            #This checks that the cytoplasmic region starts where the transmembrane sequence ends.Be wary that location uses python slicing and zero-base counting rather than human friendly couting. https://www.biostars.org/p/139981/#140157
+                            print("Helix faces the cytoplasm.")
+                            #This checks that the cytoplasmic region starts where the transmembrane sequence ends.Be wary that location uses python slicing and zero-base counting rather than human friendly counting. https://www.biostars.org/p/139981/#140157
                             if f.location.end == next_feature.location.start:
 
-                                #This fetches the sequence from the record according to the transmem annotation. This corrects the zero-base counting and python slicing of the location.
-                                cyt_facing_TMD = f.extract(record.seq)
+                                #This fetches the sequence from the record according to the transmem annotation. This corrects for the zero-base counting and python slicing of the location.
+                                cyt_facing_TMD = flanks_and_TMD
 
 
                                 ### DO THING HERE ###
@@ -102,12 +108,12 @@ for filename in filenames:
 
 
                                 # HYDROPATHY with Jims script
-                                for x in TMD:
-                                    with open('KD_calc_in.txt','w') as temp_fasta:
-                                        temp_fasta.write(">")
-                                        temp_fasta.write(protein_name)
-                                        temp_fasta.write("\n")
-                                        temp_fasta.write(str(cyt_facing_TMD))
+                                #for x in TMD:
+                                with open('KD_calc_in.txt','w') as temp_fasta:
+                                    temp_fasta.write(">")
+                                    temp_fasta.write(protein_name)
+                                    temp_fasta.write("\n")
+                                    temp_fasta.write(str(cyt_facing_TMD))
 
 
                                 var = "/"
@@ -115,11 +121,12 @@ for filename in filenames:
                                 pipe.wait()
 
 
-                                with open('KDcalc_out.txt', 'r') as totalKD:
+                                with open('KDcalc_out.txt', 'rb') as totalKD:
                                     lines = totalKD.readlines()
 
                                     KD_line = lines[4]
                                     totalKD.close()
+
                                 os.remove("KDcalc_out.txt")
                                 os.remove("KD_calc_in.txt")
                                 KD_line = str(KD_line[4:])
@@ -133,17 +140,14 @@ for filename in filenames:
 
 
 
-
-
                         ### not cytoplasmic facing, these TRANSMEM sequences should be reversed - still unsure of what to do for Plasma membrane... ###
 
                         elif "Cytoplasmic" in str(previous_feature.qualifiers):
-
+                            print("Helix faces away from the cytoplasm.")
                             #This checks that the next topological domain starts where the transmembrane sequence ends.
                             if f.location.start == previous_feature.location.end:
 
-                                non_cyt_facing_TMD = f.extract(record.seq)
-                                non_cyt_facing_TMD = non_cyt_facing_TMD[::-1]
+                                non_cyt_facing_TMD = flanks_and_TMD_reversed
 
                                 #DO THING HERE
                                 # Kyte & Doolittle index of hydrophobicity
@@ -168,12 +172,12 @@ for filename in filenames:
 
 
                                 # HYDROPATHY with Jims script
-                                for y in TMD:
-                                    with open('KD_calc_in.txt','w') as temp_fasta:
-                                        temp_fasta.write(">")
-                                        temp_fasta.write(protein_name)
-                                        temp_fasta.write("\n")
-                                        temp_fasta.write(str(non_cyt_facing_TMD))
+                                #for y in TMD:
+                                with open('KD_calc_in.txt','w') as temp_fasta:
+                                    temp_fasta.write(">")
+                                    temp_fasta.write(protein_name)
+                                    temp_fasta.write("\n")
+                                    temp_fasta.write(str(non_cyt_facing_TMD))
 
 
                                 var = "/"
@@ -181,7 +185,7 @@ for filename in filenames:
                                 pipe.wait()
 
 
-                                with open('KDcalc_out.txt', 'r') as totalKD:
+                                with open('KDcalc_out.txt', 'rb') as totalKD:
                                     lines = totalKD.readlines()
                                     KD_line = lines[4]
                                     totalKD.close()
@@ -193,6 +197,7 @@ for filename in filenames:
                                 KD_line =KD_line.replace(' ', ',')
 
                                 print(record.id, ",", protein_name,",", TMD_KD_avg,",", KD_line)
+
 
 
 print("End.")

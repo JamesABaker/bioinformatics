@@ -44,8 +44,8 @@ for ($i=1; $i<=$ntop; $i++) {
   $xsqsum_win[$i]	= 0;
 }
 
-$winlen		= 19;		# window for calculation of KD nb 19 advised for KD TM (1.6 threshold) detection
-$winlen2	=  9;		# = (winlen-1)/2
+$winlen		= 5;		# window for calculation of KD nb 19 advised for KD TM (1.6 threshold) detection
+$winlen2	=  2;		# = (winlen-1)/2
 #$winlen	= 21;		# window for calculation of KD nb 19 advised for KD TM (1.6 threshold) detection
 #$winlen2	= 10;		# = (winlen-1)/2
 if ((2*$winlen2+1) != $winlen) {
@@ -844,4 +844,3 @@ if ($TM_goodbad eq "yes") {		# now for ranking (and output) by biggest within se
 close (RANKING);
 
 exit;
-

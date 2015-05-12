@@ -30,8 +30,7 @@ with open ("input.fasta", "rb") as fastafile:
 
 for i in this_line:
     if ">" in i:
-        print "\n"
-        print i
+        pass #This means that the lines that start with > won't be counted. i.e. header lines are not counted.
 
     else:
         sequence = str(i)
