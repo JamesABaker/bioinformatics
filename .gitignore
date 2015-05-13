@@ -36,6 +36,4 @@
 #Here are specific input folders that should be ignored
 /input/*
 /output/*
-/GOOD-BAD/previous
-/Kyte&Doolittle/input
-/AA_distribution/Old_method
+/Archive 2.zip

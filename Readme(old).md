@@ -7,7 +7,7 @@ This project is made up of a bundle of scripts that aims to study transmembrane 
 
 ###Getting started | Requirements.
 
-The scripts require `python2`, `python3`, `perl`, and `Biopython` to work fully.
+The scripts require `python`, `python3`, `perl`, and `Biopython` to work fully.
 
 Do not try and run simultaneous instances of these scripts as this will probably cause files to be lost and mishmashed together.
 
