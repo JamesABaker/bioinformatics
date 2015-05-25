@@ -32,8 +32,10 @@
 *.dat
 *.txt
 *.fasta
+*.pdb
 
 #Here are specific input folders that should be ignored
 /input/*
 /output/*
 /Archive 2.zip
+/Readme(old).md
