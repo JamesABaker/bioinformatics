@@ -39,3 +39,5 @@
 /output/*
 /Archive 2.zip
 /Readme(old).md
+
+*.csv

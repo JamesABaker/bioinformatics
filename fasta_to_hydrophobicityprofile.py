@@ -7,7 +7,7 @@ import re
 
 print "Opening input.\n"
 
-with open ("input.fasta", "rb") as fastafile:
+with open ("mutants.fasta", "rb") as fastafile:
     data=fastafile.read().replace("'\n", "':::") #this ::: acts as a marker for makign the list of lists
     stringA = data
     stringB = [] #Create an empty list
@@ -18,10 +18,8 @@ with open ("input.fasta", "rb") as fastafile:
 seqs = stringB
 
 for i in seqs:
-    print i
     header = i[0]
     seq1 = i[1]
-    print "Calculating KD of ", header, "..."
     with open('KD_calc_in.txt','wb') as temp_fasta:
         temp_fasta.write(header)
         temp_fasta.write("\n")
@@ -38,11 +36,11 @@ for i in seqs:
         KD_line = lines[4]
         totalKD.close()
 
-    KD_average = reduce(lambda x, y: x + y, KD_line) / len(KD_line)
+
 
     ID = str(header)
     KD = str(KD_line)
-    Average = str(KD_average)
+
 
     ID = re.sub('[>]', '', ID)
     ID = re.sub("[']", '', ID)
