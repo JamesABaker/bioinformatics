@@ -2,8 +2,6 @@ filename = "human_multipass"
 
 #These are the amino acid counts at each position. For now, its just set at 0s way beyond a feasible TMD.
 
-
-
 A = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 R = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 N = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -129,44 +127,42 @@ for i in this_line:
                 V[x] = V[x] + 1
 
 
-print "Bulky residues."
-print "W frequency: ", str(W)[1:-1]
-print "Y frequency: ", str(Y)[1:-1]
-print "F frequency: ", str(F)[1:-1]
 
-print "Hydrophobic residues."
-print "I frequency: ", str(I)[1:-1]
+
+
+print "Non-polar residues."
 print "L frequency: ", str(L)[1:-1]
-print "M frequency: ", str(M)[1:-1]
-print "V frequency: ", str(V)[1:-1]
-
-print "Polar residues."
-
+print "I frequency: ", str(I)[1:-1]
 print "A frequency: ", str(A)[1:-1]
-print "P frequency: ", str(P)[1:-1]
+print "F frequency: ", str(F)[1:-1]
+print "V frequency: ", str(V)[1:-1]
+print "G frequency: ", str(G)[1:-1]
+print "\n"
+print "Polar residues."
 print "S frequency: ", str(S)[1:-1]
 print "T frequency: ", str(T)[1:-1]
-print "G frequency: ", str(G)[1:-1]
-
-
-print "Positive residues."
-
+print "M frequency: ", str(M)[1:-1]
+print "C frequency: ", str(C)[1:-1]
+print "W frequency: ", str(W)[1:-1]
+print "Y frequency: ", str(Y)[1:-1]
+print "P frequency: ", str(P)[1:-1]
+print "N frequency: ", str(N)[1:-1]
+print "H frequency: ", str(H)[1:-1]
+print "Q frequency: ", str(Q)[1:-1]
+print "\n"
+print "Negatively Charged Residues."
+print "D frequency: ", str(D)[1:-1]
+print "E frequency: ", str(E)[1:-1]
+print "\n"
+print "Positively Charged Residues."
 print "R frequency: ", str(R)[1:-1]
 print "K frequency: ", str(K)[1:-1]
 
-print "Negative residues."
 
-print "E frequency: ", str(E)[1:-1]
-print "D frequency: ", str(D)[1:-1]
+print "\n"
+print "\n"
+print "Residues in their alternative form."
 
-
-print "Other residues."
-print "N frequency: ", str(N)[1:-1]
-
+print "\n"
 print "B frequency: ", str(B)[1:-1]
-print "C frequency: ", str(C)[1:-1]
-
-print "Q frequency: ", str(Q)[1:-1]
 print "Z frequency: ", str(Z)[1:-1]
-
-print "H frequency: ", str(H)[1:-1]
