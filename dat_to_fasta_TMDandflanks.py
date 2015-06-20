@@ -1,4 +1,3 @@
-
 #Converts a .dat or uniprot text file to TMH_and_flanking.fasta
 
 

@@ -45,18 +45,24 @@ for filename in filenames:
 
         ### TOPOLOGY CHECKER ###
         #We are only interested in finding helices with annotated cytoplasmic regions.
+
+
+
         #This opens the loop within the record (ie loops through the features in a single id)
-        for i, f in enumerate(record.features):
+        for i, f in enumerate(record.features): #i holds the number of the feature in 0,1,2,3,4 etc. f is the feature record.
 
             #if the feature is a TRANSMEM region then...
             if f.type == feature_type:
 
+                #this checks that the helix actually has a TM with a flanking region.
                 if f.location.end != "":
 
                     flank1 = record.seq[(f.location.start-5):(f.location.start)]
 
+                    #There was a weird bug where one flank had "Unknown" annotation. This error handler reports any similar ids.
                     if "UnknownPosition" in str(f.location):
                         print(record.id, "contained a TMD without sequence number information.")
+
                     else:
                         flank2 = record.seq[(f.location.end):(f.location.end+5)]
                         TMD = f.extract(record.seq)

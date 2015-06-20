@@ -10,7 +10,7 @@ import numpy
 
 
 #These are the variables that are repeatedly used throughout the script. The only one that changes is the output_filename that is changed as the separate fasta sequences are generated.
-filenames = ["ER_human.dat"]
+filenames = ["human_transmem.txt"]
 input_format = "swiss" #This SHOULD work with uniprot filetype
 feature_type = "TRANSMEM" #For future modification, this can be used to look for any annotation in the .dat file.
 output_filename = "TMH.fasta" #Simply the output name, can be anything as it is written in binary (not file-type specific language).
@@ -40,18 +40,22 @@ for filename in filenames:
                 ### HYDROPATHY CALCULATOR ###
                 #Now we are going to get the average hydrophobicity of each region and save it to a string.
                 # Kyte & Doolittle index of hydrophobicity
-                kd = {'A': 1.8, 'R':-4.5, 'N':-3.5, 'D':-3.5, 'C': 2.5, 'Q':-3.5, 'E':-3.5, 'G':-0.4, 'H':-3.2, 'I': 4.5, 'L': 3.8, 'K':-3.9, 'M':1.9, 'F': 2.8, 'P':-1.6,'S':-0.8, 'T':-0.7, 'W':-0.9, 'Y':-1.3, 'V': 4.2}
+                kd = {'A': 1.8, 'R':-4.5, 'N':-3.5, 'D':-3.5, 'C': 2.5, 'Q':-3.5, 'E':-3.5, 'G':-0.4, 'H':-3.2, 'I': 4.5, 'L': 3.8, 'K':-3.9, 'M':1.9, 'F': 2.8, 'P':-1.6,'S':-0.8, 'T':-0.7, 'W':-0.9, 'Y':-1.3, 'V': 4.2,}
 
                 TMD = list(TMD)
 
                 TMD_KD_complete = []
-
+                #print record.id, TMD
                 for i in TMD:
-                    hydrophobicity = kd[i]
-                    TMD_KD_complete.append(hydrophobicity)
+                    if i == 'X':
+                        pass
+                    else:
+                        hydrophobicity = kd[i]
+                        TMD_KD_complete.append(hydrophobicity)
 
                 TMD_KD_avg = numpy.mean(TMD_KD_complete)
 
+                #print TMD_KD_avg
                 #Extract human readable name of ID
                 protein_name = record.description
                 start_name = protein_name.find("Full=")
