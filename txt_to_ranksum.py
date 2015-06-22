@@ -26,7 +26,7 @@ from scipy import stats
 x=[]
 y=[]
 
-#This opens x and line by line imports a new value.
+#This opens the x and y files line by line and imports each value as a new value in the lists.
 with open ("x.txt", "r") as xfile:
     for a in xfile.read().split():
         x.append(a)
@@ -35,5 +35,6 @@ with open ("y.txt", "r") as yfile:
     for b in yfile.read().split():
         y.append(b)
 
+#Now the datasets have the values in, we can use the scipy ranksum module.
 print "(z-statistic, p-value)"
 print scipy.stats.ranksums(x, y)
