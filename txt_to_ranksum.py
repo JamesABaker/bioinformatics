@@ -18,13 +18,15 @@ A sample file contains:
 '''
 
 
-
+#Numpy is also needed for scipy to work properly I think...
 import scipy
 from scipy import stats
 
+#These lists hold the two datasets
 x=[]
 y=[]
 
+#This opens x and line by line imports a new value.
 with open ("x.txt", "r") as xfile:
     for a in xfile.read().split():
         x.append(a)
