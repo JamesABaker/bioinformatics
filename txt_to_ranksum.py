@@ -3,20 +3,10 @@
 '''
 A sample file contains:
 
-1.819047619
-1.561904762
-1.476190476
-1.471428571
-1.316666667
-1.300334448
+1.8
+1.5
 1.3
-1.252380952
-1.242857143
-1.223809524
-1.2
-1.123809524
 '''
-
 
 #Numpy is also needed for scipy to work properly I think...
 import scipy
