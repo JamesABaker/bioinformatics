@@ -7,6 +7,7 @@ import re
 
 ### Function to find G zippers.
 number_of_zip_motifs = 0
+
 def Find(pat, text):
     global number_of_zip_motifs
     match = re.search(pat, text)
@@ -49,8 +50,7 @@ for filename in filenames:
                 TMD = f.extract(record.seq)
                 TMD = str(TMD)
 
-                #G zipper counter
-                number_of_zip_motifs = 0
+
 
                 #print "Searching for G zipper motif in the TMD from ", record.id, ": ", TMD
                 Find('G...G', TMD) #Should the significant complete zippers be used here instead? (G,A,S)XXXGXXXG and GXXXGXXX(G,S,T).
@@ -82,7 +82,12 @@ for filename in filenames:
                 this_total_average_output = [record.id, f.location.start, f.location.end, TMD_KD_avg, protein_name, number_of_zip_motifs]
                 total_average_KD.append(this_total_average_output)
 
+        #G zipper counter reset per protein ID
+        number_of_zip_motifs = 0
+
 #total_average_KD now holds each TMD as an [ID, header line, start position, end position, average KD]
+
+print " ID, Name and details, Distance between pair, Average hydrophobicity of pair, The difference in hydrophobicity between the pair, The number of gzip motifs in the pair."
 
 for i, item in enumerate(total_average_KD):
     this_protein = total_average_KD[i]
@@ -96,8 +101,11 @@ for i, item in enumerate(total_average_KD):
         this_difference = abs(this_protein[3]-that_protein[3])
 
         pairwise_gzippers = this_protein[5] = that_protein[5]
-        
-        print this_protein[0], ",", this_protein[4], ",",distance,",", this_TMD_pair_KD, ",", this_difference, ",",
+
+
+
+
+        print this_protein[0], ",", this_protein[4], ",",distance,",", this_TMD_pair_KD, ",", this_difference, ",", pairwise_gzippers
 
 
     else:
