@@ -26,8 +26,16 @@ with open ("y.txt", "r") as yfile:
         y.append(b)
 
 #Now the datasets have the values in, we can use the scipy ranksum module.
+if len(x) < 20:
+    print "WARNING: Because the normal approximation is used for the calculations, the samples used should be large. A typical rule is to require that n > 20."
+elif len(y) < 20:
+    print "WARNING: Because the normal approximation is used for the calculations, the samples used should be large. A typical rule is to require that n > 20."
+else:
+    pass
+
 print "test: (z-statistic, p-value)"
 print "The Wilcoxon rank-sum test:", scipy.stats.ranksums(x, y)
+
 if len(y)==len(x):
     print "Wilcoxon signed-rank test:", scipy.stats.wilcoxon(x, y)
 else:
