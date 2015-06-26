@@ -26,5 +26,9 @@ with open ("y.txt", "r") as yfile:
         y.append(b)
 
 #Now the datasets have the values in, we can use the scipy ranksum module.
-print "(z-statistic, p-value)"
-print scipy.stats.ranksums(x, y)
+print "test: (z-statistic, p-value)"
+print "The Wilcoxon rank-sum test:", scipy.stats.ranksums(x, y)
+if len(y)==len(x):
+    print "Wilcoxon signed-rank test:", scipy.stats.wilcoxon(x, y)
+else:
+    print "Unequal N in x.txt and y.txt so a Wilcoxon signed-rank test cannot be applied."
