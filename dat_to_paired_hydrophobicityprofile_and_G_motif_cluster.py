@@ -53,8 +53,12 @@ for filename in filenames:
 
 
                 #print "Searching for G zipper motif in the TMD from ", record.id, ": ", TMD
-                Find('G...G', TMD) #Should the significant complete zippers be used here instead? (G,A,S)XXXGXXXG and GXXXGXXX(G,S,T).
+                Find('G...G...G', TMD) #Should the significant complete zippers be used here instead? (G,A,S)XXXGXXXG and GXXXGXXX(G,S,T).
                 #print number_of_zip_motifs
+                Find('A...G...G', TMD)
+                Find('S...G...G', TMD)
+                Find('G...G...S', TMD)
+                Find('G...G...T', TMD)
 
 
                 #Hydrophobicity of TMD
