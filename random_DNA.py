@@ -1,5 +1,8 @@
 import socket
 import random
+from Bio.Seq import translate
+
+
 HOST, PORT = '', 8888
 
 listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -21,8 +24,12 @@ while True:
     while length < 200:
         mut = mut + random.choice(dna_list)
         length = len(mut)
-    
-    
-    http_response = ">random_fasta\n" + mut #This holds the output.
+
+    prot = translate(mut)
+
+    output =">random_fasta_DNA\n" + mut +"\n\n>random_fasta_protein\n" + prot
+    http_response = str(output) #This holds the output.
+
+
     client_connection.sendall(http_response)
     client_connection.close()
