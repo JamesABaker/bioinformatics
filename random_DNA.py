@@ -27,8 +27,28 @@ while True:
 
     prot = translate(mut)
 
-    output =">random_fasta_DNA\n" + mut +"\n\n>random_fasta_protein\n" + prot
+    #Now its time to compose the html
+
+    header = '''
+    <html>
+    <body>
+    <h1>Random DNA </h1>
+    '''
+
+    random_DNA = "<br>>random_fasta_DNA<br>" + mut + "<br>"
+
+    random_protein = "<br>>random_fasta_protein<br>" + prot + "<br>"
+
+    footer = '''
+    </body>
+    </html>
+    '''
+
+    output = header + random_DNA + random_protein + footer
+
+
     http_response = str(output) #This holds the output.
+    print output
 
 
     client_connection.sendall(http_response)

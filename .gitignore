@@ -33,6 +33,7 @@
 *.txt
 *.fasta
 *.pdb
+.DS_Store
 
 #Here are specific input folders that should be ignored
 /input/*
