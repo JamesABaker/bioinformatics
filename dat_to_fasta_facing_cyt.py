@@ -24,7 +24,7 @@ import numpy
 
 #These are the variables that are repeatedly used throughout the script.
 
-FILE = "human_singlepass" ##########CHANGE THIS TO "YOUR FILE".txt without the .dat or .txt extension############
+FILE = "Human_tremblONLY" ##########CHANGE THIS TO "YOUR FILE".txt without the .dat or .txt extension############
 filenames = ["input/%s.txt" %FILE]
 
 
