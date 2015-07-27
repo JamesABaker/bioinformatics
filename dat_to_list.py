@@ -9,8 +9,9 @@ import numpy
 ### BIOPYTHON STANDARD VARIABLES FOR SEQ-IO ###
 
 
-#These are the variables that are repeatedly used throughout the script. The only one that changes is the output_filename that is changed as the separate fasta sequences are generated.
-filenames = ["transmem.dat"]
+#These are the variables that are repeatedly used throughout the script. The only one that changes is the output_filename that is changed as the separate fasta sequences are generated
+.
+filenames = ["input/human_multipass.txt"]
 input_format = "swiss" #This SHOULD work with uniprot filetype
 feature_type = "TRANSMEM" #For future modification, this can be used to look for any annotation in the .dat file.
 output_filename = "TMH.fasta" #Simply the output name, can be anything as it is written in binary (not file-type specific language).

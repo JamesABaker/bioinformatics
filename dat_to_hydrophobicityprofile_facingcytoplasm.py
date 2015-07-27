@@ -8,7 +8,7 @@
 ##################################################
 
 #requires PYTHON3
-#requires KD_calc.pl in the working directory
+#requires hydrophobicity perl scripts in the working directory
 
 import os
 import subprocess
@@ -117,7 +117,7 @@ for filename in filenames:
 
 
                                 var = "/"
-                                pipe = subprocess.Popen(["perl", "KD_calc.pl", var])
+                                pipe = subprocess.Popen(["perl", "KyteDoolittle.pl", var])
                                 pipe.wait()
 
 
@@ -181,7 +181,7 @@ for filename in filenames:
 
 
                                 var = "/"
-                                pipe = subprocess.Popen(["perl", "KD_calc.pl", var])
+                                pipe = subprocess.Popen(["perl", "KyteDoolittle.pl", var])
                                 pipe.wait()
 
 
