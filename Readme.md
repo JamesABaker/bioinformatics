@@ -2,6 +2,8 @@
 
 This project is made up of a bundle of scripts that aims to study transmembrane sequence data. There are several pipelines that can be easily used.
 
+The overarching method would be to have an input file in the directory, change the file directory of the input variable in the script to that file, and then run the python script.
+
 
 ###Getting started | Requirements.
 
@@ -9,7 +11,7 @@ The scripts require `python`, `python3`, `perl`, and `Biopython` to work fully.
 
 Do not try and run simultaneous instances of these scripts as this will probably cause files to be lost and mishmashed together.
 
-Hopefully you have a copy of python installed already. If not, head [here](https://www.python.org/downloads/) to download python. Currently the Python of the project is written in Python2 which is still the most supported and widely used version, however some of the scripts use python3.
+Hopefully you have a copy of python installed already. If not, head [here](https://www.python.org/downloads/) to download python.
 
 ####Installing Biopython:
 
