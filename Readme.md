@@ -2,7 +2,14 @@
 
 This project is made up of a bundle of scripts that aims to study transmembrane sequence data. There are several pipelines that can be easily used.
 
-The overarching method would be to have an input file in the directory, change the file directory of the input variable in the script to that file, and then run the python script.
+The overarching method would be to have an input file in the directory, change the file directory of the input variable in the script to that file, and then run the python script. *i.e* if you had a txt file from uniprot (a dat file), and you wanted to generate a fasta of all transmembrane sequences:
+
+ 1. Move input file to `/PATH/TO/bioinformatics/YOURFILE`
+ 1. Open `dat_to_fasta_TMDandflanks.py` in a text editor
+ 2. Change the input file to you txt file
+ 3. Run the script by doing `python dat_to_fasta_TMDandflanks.py`
+
+Any problems, let me know by [email](mailto:baker.james.jb@gmail.com) or [log an issue](https://github.com/jbkr/bioinformatics/issues) in github
 
 
 ###Getting started | Requirements.
