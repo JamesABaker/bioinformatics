@@ -9,7 +9,7 @@ from Bio import SeqIO
 
 
 #These are the variables that are repeatedly used throughout the script. The only one that changes is the output_filename that is changed as the separate fasta sequences are generated.
-filenames = ["human_TRANSMEM.txt"]
+filenames = ["cytb5_homologues.txt"]
 input_format = "swiss" #This SHOULD work with uniprot filetype
 feature_type = "TRANSMEM" #For future modification, this can be used to look for any annotation in the .dat file.
 output_filename = "TMH_and_flanking.fasta" #Simply the output name, can be anything as it is written in binary (not file-type specific language).

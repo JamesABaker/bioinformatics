@@ -66,7 +66,7 @@ for filename in filenames:
                         temp_fasta.write("\n")
                         temp_fasta.write(str(f.extract(record.seq)))
 
-
+                #Change this to the scale you want from the available perl scripts
                 var = "/"
                 pipe = subprocess.Popen(["perl", "KyteDoolittle.pl", var])
                 pipe.wait()

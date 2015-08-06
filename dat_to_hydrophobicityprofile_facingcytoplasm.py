@@ -63,7 +63,7 @@ for filename in filenames:
 
 
                     #This checks that the record has topological domain annotation.
-                    if next_feature.type == other_feature_type:
+                    if next_feature.type == other_feature_type:[]
 
 
 
