@@ -14,10 +14,10 @@ import numpy
 
 
 #These are the variables that are repeatedly used throughout the script. The only one that changes is the output_filename that is changed as the separate fasta sequences are generated.
-filenames = ["human/human_PM.txt"]
+filenames = ["mutants.fasta"]
 input_format = "swiss" #This SHOULD work with uniprot filetype
 feature_type = "TRANSMEM" #For future modification, this can be used to look for any annotation in the .dat file.
-output_filename = "human_ER.txt" #Simply the output name, can be anything as it is written in binary (not file-type specific language).
+output_filename = "output.txt" #Simply the output name, can be anything as it is written in binary (not file-type specific language).
 
 
 

@@ -27,7 +27,7 @@ for i in seqs:
 
 
     var = "/"
-    pipe = subprocess.Popen(["perl", "KyteDoolittle.pl", var])
+    pipe = subprocess.Popen(["perl", "WWint.pl", var])
     pipe.wait()
 
 
@@ -43,6 +43,7 @@ for i in seqs:
 
 
     ID = re.sub('[>]', '', ID)
+    ID = re.sub(' ', '', ID)
     ID = re.sub("[']", '', ID)
     KD = re.sub("[KD=]", '', KD)
     result = ID+KD
