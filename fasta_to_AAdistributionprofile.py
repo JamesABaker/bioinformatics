@@ -1,5 +1,5 @@
 #filename has to be a fasta, so ignore the extension when entering filename below.
-filename = "cytb5_hhpred_homologues_aligned"
+filename = "ptp_alignment"
 
 #These are the amino acid counts at each position. For now, its just set at 0s way beyond a feasible TMD.
 
@@ -127,7 +127,93 @@ for i in this_line:
 
                 V[x] = V[x] + 1
 
+            if residue == "a":
 
+                A[x] = A[x] + 1
+
+            if residue == "r":
+
+                R[x] = R[x] + 1
+
+            if residue == "n":
+
+                N[x] = N[x] + 1
+
+            if residue == "d":
+
+                D[x] = D[x] + 1
+
+            if residue == "b":
+
+                B[x] = B[x] + 1
+
+            if residue == "c":
+
+                C[x] = C[x] + 1
+
+            if residue == "e":
+
+                E[x] = E[x] + 1
+
+            if residue == "q":
+
+                Q[x] = Q[x] + 1
+
+            if residue == "z":
+
+                Z[x] = Z[x] + 1
+
+            if residue == "g":
+
+                G[x] = G[x] + 1
+
+            if residue == "h":
+
+                H[x] = H[x] + 1
+
+            if residue == "i":
+
+                I[x] = I[x] + 1
+
+            if residue == "l":
+
+                L[x] = L[x] + 1
+
+            if residue == "k":
+
+                K[x] = K[x] + 1
+
+            if residue == "m":
+
+                M[x] = M[x] + 1
+
+            if residue == "f":
+
+                F[x] = F[x] + 1
+
+            if residue == "p":
+
+                P[x] = P[x] + 1
+
+            if residue == "s":
+
+                S[x] = S[x] + 1
+
+            if residue == "t":
+
+                T[x] = T[x] + 1
+
+            if residue == "w":
+
+                W[x] = W[x] + 1
+
+            if residue == "y":
+
+                Y[x] = Y[x] + 1
+
+            if residue == "v":
+
+                V[x] = V[x] + 1
 
 
 

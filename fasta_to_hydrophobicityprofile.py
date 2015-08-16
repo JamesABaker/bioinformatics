@@ -7,7 +7,7 @@ import re
 
 print "Opening input.\n"
 
-with open ("mutants.fasta", "rb") as fastafile:
+with open ("tail_anchors_tmhandflanks.fasta", "rb") as fastafile:
     data=fastafile.read().replace("'\n", "':::") #this ::: acts as a marker for makign the list of lists
     stringA = data
     stringB = [] #Create an empty list
@@ -27,7 +27,7 @@ for i in seqs:
 
 
     var = "/"
-    pipe = subprocess.Popen(["perl", "WWint.pl", var])
+    pipe = subprocess.Popen(["perl", "Hessa.pl", var])
     pipe.wait()
 
 
@@ -50,7 +50,5 @@ for i in seqs:
     result = re.sub("  ", ', ', result)
     result = re.sub(", , , ,", '', result)
     result = re.sub(" , ", '', result)
+    result = re.sub("\n", '', result)
     print result
-
-    with open('result.csv', 'ab') as results_file:
-        results_file.write(result)
