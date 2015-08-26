@@ -1,5 +1,5 @@
 #filename has to be a fasta, so ignore the extension when entering filename below.
-filename = "ptp_alignment"
+filename = "ptp_alignment2"
 
 #These are the amino acid counts at each position. For now, its just set at 0s way beyond a feasible TMD.
 
