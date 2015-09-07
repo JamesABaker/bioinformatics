@@ -117,7 +117,7 @@ for filename in filenames:
 
 
                                 var = "/"
-                                pipe = subprocess.Popen(["perl", "Hessa.pl", var])
+                                pipe = subprocess.Popen(["perl", "KyteDoolittle.pl", var])
                                 pipe.wait()
 
 
@@ -249,7 +249,7 @@ for filename in filenames:
 
 
                                 var = "/"
-                                pipe = subprocess.Popen(["perl", "Hessa.pl", var])
+                                pipe = subprocess.Popen(["perl", "WWcomplete.pl", var])
                                 pipe.wait()
 
 

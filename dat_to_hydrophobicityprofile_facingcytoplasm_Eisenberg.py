@@ -249,7 +249,7 @@ for filename in filenames:
 
 
                                 var = "/"
-                                pipe = subprocess.Popen(["perl", "KyteDoolittle.pl", var])
+                                pipe = subprocess.Popen(["perl", "Eisenberg.pl", var])
                                 pipe.wait()
 
 
