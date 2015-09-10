@@ -1,12 +1,3 @@
-##################################################
-#####      Converts .dat files to            #####
-#####     ID, NAME, AVERAGE KD, KD profile.  #####
-#####   The rightmost number of the profile  #####
-#####   is at the cytosolic edge of the TMD. #####
-#####        Script by James Baker           #####
-#####       University of Manchester         #####
-##################################################
-
 #requires PYTHON3
 #requires hydrophobicity perl scripts in the working directory
 
