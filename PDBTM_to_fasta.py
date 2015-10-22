@@ -6,6 +6,8 @@
 
 import xml.sax
 
+#This OOP has a lot of oopsies, and alothough it LOOKs like the order is wrong, trust me, it won't work any other way without a lot of work...
+
 
 class DataHandler(xml.sax.ContentHandler):
 
@@ -19,10 +21,29 @@ class DataHandler(xml.sax.ContentHandler):
             id = attributes["ID"]
             print "\n\n\n*******", "New ID:", id, "*******\n"
 
+        elif tag == "CHAIN":
+            TM_type = attributes["TYPE"]
+            if "alpha" in TM_type:
+                print "TM alpha helix recorded in chain"
+            elif "beta" in TM_type:
+                print "B barrel TM structure recorded in chain"
+
+        elif tag == "REGION":
+            TM_region_type = attributes["type"]
+            if "H" in TM_region_type:
+                print "TM alpha helix recorded in chain"
+                seq_beg=attributes["seq_beg"]
+                seq_end=attributes["seq_end"]
+                print seq_beg
+                print seq_end
+            else:
+                pass
+
+
     # Call when an elements ends
     def endElement(self, content):
         if self.CurrentData == "SEQ":
-            print "End of sequence:"
+            print "End of chain.\n"
 
         self.CurrentData = ""
 
@@ -33,8 +54,12 @@ class DataHandler(xml.sax.ContentHandler):
             sequence = str(self.SEQ)
             sequence = sequence.translate(None, ' ')
             sequence = sequence.translate(None, '\n')
-            print "Sequence:"
-            print sequence
+
+#Many of the sequence entries are empy, here we ignore the empty sequences.
+            if not sequence:
+                pass
+            else:
+                print "Chain sequence:",sequence
             # print self.SEQ
        #  elif self.CurrentData == "REGION":
        #     self.REGION = content
