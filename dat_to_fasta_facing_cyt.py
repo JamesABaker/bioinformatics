@@ -57,16 +57,16 @@ for filename in filenames:
                 #this checks that the helix actually has a TM with a flanking region.
                 if f.location.end != "":
 
-                    flank1 = record.seq[(f.location.start-5):(f.location.start)]
+                    flank1 = record.seq[(f.location.start-15):(f.location.start)]
 
                     #There was a weird bug where one flank had "Unknown" annotation. This error handler reports any similar ids.
                     if "UnknownPosition" in str(f.location):
                         print(record.id, "contained a TMD without sequence number information.")
 
                     else:
-                        flank2 = record.seq[(f.location.end):(f.location.end+5)]
+                        flank2 = record.seq[(f.location.end):(f.location.end+15)]
                         TMD = f.extract(record.seq)
-                        flanks_and_TMD = record.seq[(f.location.start-5):(f.location.end+5)]
+                        flanks_and_TMD = record.seq[(f.location.start-15):(f.location.end+15)]
                         flanks_and_TMD_reversed = flanks_and_TMD[::-1]
 
 
@@ -98,7 +98,7 @@ for filename in filenames:
                                         protein_name = record.description
                                         start_name = protein_name.find("Full=")
                                         end_name = protein_name.find(";")
-                                        protein_name = protein_name[start_name+5:end_name]
+                                        protein_name = protein_name[start_name+15:end_name]
                                         protein_name = protein_name.replace(',','-')
 
 
@@ -119,7 +119,7 @@ for filename in filenames:
                                         protein_name = record.description
                                         start_name = protein_name.find("Full=")
                                         end_name = protein_name.find(";")
-                                        protein_name = protein_name[start_name+5:end_name]
+                                        protein_name = protein_name[start_name+15:end_name]
                                         protein_name = protein_name.replace(',','-')
                                         print(">", record.id, protein_name, "\n", non_cyt_facing_TMD, sep="")
 

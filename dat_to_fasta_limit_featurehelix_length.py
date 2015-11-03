@@ -14,11 +14,11 @@ import numpy
 # These are the variables that are repeatedly used throughout the script.
 # The only one that changes is the output_filename that is changed as the
 # separate fasta sequences are generated.
-filenames = ["helixnottransmembraneandhuman.txt"]
+filenames = ["human.txt"]
 input_format = "swiss"  # This SHOULD work with uniprot filetype
 # For future modification, this can be used to look for any annotation in
 # the .dat file.
-feature_type = "TRANSMEM"
+feature_type = "HELIX"
 # Simply the output name, can be anything as it is written in binary (not
 # file-type specific language).
 output_filename = "Helix.fasta"
@@ -58,31 +58,39 @@ for filename in filenames:
             if f.type == feature_type:
                 TMD_counter = TMD_counter + 1
 
+
                 TMD = f.extract(record.seq)
-                flank1 = record.seq[(f.location.start - 15):(f.location.start)]
-                flank2 = record.seq[(f.location.end):(f.location.end + 15)]
+                if len(TMD) < 24:
+                    if len(TMD) > 17:
+                        flank1 = record.seq[(f.location.start - 15):(f.location.start)]
+                        flank2 = record.seq[(f.location.end):(f.location.end + 15)]
 
-                header = str(">" + record.id +
-                             record.description + record.name)
-                print header
-                print flank1, TMD, flank2
-                flank1 = str(flank1)
-                flank2 = str(flank2)
-                TMD = str(TMD)
-                with open("output/flank1.fasta", "ab") as myfile:
-                    myfile.write(header)
-                    myfile.write("\n")
-                    myfile.write(flank1)
-                    myfile.write("\n")
+                        header = str(">" + record.id +
+                                     record.description + record.name)
 
-                with open("output/TMD.fasta", "ab") as myfile:
-                    myfile.write(header)
-                    myfile.write("\n")
-                    myfile.write(TMD)
-                    myfile.write("\n")
+                        sequence_for_printing = flank1 + TMD + flank2
 
-                with open("output/flank2.fasta", "ab") as myfile:
-                    myfile.write(header)
-                    myfile.write("\n")
-                    myfile.write(flank2)
-                    myfile.write("\n")
+                        print header
+                        print sequence_for_printing
+
+
+                        flank1 = str(flank1)
+                        flank2 = str(flank2)
+                        TMD = str(TMD)
+                        with open("output/flank1.fasta", "ab") as myfile:
+                            myfile.write(header)
+                            myfile.write("\n")
+                            myfile.write(flank1)
+                            myfile.write("\n")
+
+                        with open("output/TMD.fasta", "ab") as myfile:
+                            myfile.write(header)
+                            myfile.write("\n")
+                            myfile.write(TMD)
+                            myfile.write("\n")
+
+                        with open("output/flank2.fasta", "ab") as myfile:
+                            myfile.write(header)
+                            myfile.write("\n")
+                            myfile.write(flank2)
+                            myfile.write("\n")
