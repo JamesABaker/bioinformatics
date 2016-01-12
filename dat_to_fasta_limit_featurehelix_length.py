@@ -14,7 +14,7 @@ import numpy
 # These are the variables that are repeatedly used throughout the script.
 # The only one that changes is the output_filename that is changed as the
 # separate fasta sequences are generated.
-filenames = ["human.txt"]
+filenames = ["ecoli.txt"]
 input_format = "swiss"  # This SHOULD work with uniprot filetype
 # For future modification, this can be used to look for any annotation in
 # the .dat file.
