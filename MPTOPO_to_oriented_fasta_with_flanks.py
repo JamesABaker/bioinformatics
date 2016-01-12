@@ -59,17 +59,24 @@ for proteins in proteins_in_xml:  # visit every node <bar />
 
 
     # Slicing the sequence of each TMH
+    TMHs_counted_so_far=0
     for i in start_and_end_locations:
         print "start:", i[0]
         print "end:", i[1]
+
+
+
+        #Currently TMH_number is only holding the final total, not the running total.
+
         if "out" in io:
-            if (TMH_number % 2 == 0): #even
-                print "Reversed TMH", N_to_C_sequence[int(i[0])+1:int(i[1])+1][::-1]
+            if (TMHs_counted_so_far % 2 == 0): #even
+                print "Sequence:", N_to_C_sequence[int(i[0])+1:int(i[1])+1]
             else: #odd
-                print N_to_C_sequence[int(i[0])+1:int(i[1])+1] #+1 because python counts from 0 not 1. Flank length should be taken into account here.
+                print "Sequence:", N_to_C_sequence[int(i[0])+1:int(i[1])+1][::-1] #+1 because python counts from 0 not 1. Flank length should be taken into account here.
         if "in" in io:
-            if (TMH_number % 2 == 0): #even
-                print N_to_C_sequence[int(i[0])+1:int(i[1])+1] #+1 because python counts from 0 not 1. Flank length should be taken into account here.
+            if (TMHs_counted_so_far % 2 == 0): #even
+                print "Sequence:", N_to_C_sequence[int(i[0])+1:int(i[1])+1][::-1] #+1 because python counts from 0 not 1. Flank length should be taken into account here.
             else: #odd
-                print "Reversed TMH", N_to_C_sequence[int(i[0])+1:int(i[1])+1][::-1]
-    print N_to_C_sequence
+                print "Sequence:", N_to_C_sequence[int(i[0])+1:int(i[1])+1]
+        TMHs_counted_so_far = TMHs_counted_so_far + 1
+    print "Complete Sequence:", N_to_C_sequence
