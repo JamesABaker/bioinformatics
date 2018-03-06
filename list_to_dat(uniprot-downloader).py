@@ -8,6 +8,8 @@ import urllib
 import urllib2
 import subprocess
 import shutil
+import os
+
 
 
 # This question allows the user to pick to query, or to use their own list.
@@ -60,9 +62,13 @@ failed_download_ids = []
 filename='uniget.dat'
 f=open(filename, "w")
 for n, i in enumerate(interaction):
+    #This enforces the file is deleted and a new empty file is created for the download.
+    os.remove("uniget.dat")
+    open("uniget.dat", 'a').close()
     # Removes the spaces between lines. This was causing some really weird bugs and cutting the url below in half.
     i = i.translate(None, '\n')
     print "\nGetting %s..., record %s of %s" % (i, str(n+1), str(len(interaction)))
+
     try:
         # This uses the ID (saved as i) in a file called uniget.dat.
         download = urllib2.urlopen('http://www.uniprot.org/uniprot/%s.txt' % i,  timeout=3)
