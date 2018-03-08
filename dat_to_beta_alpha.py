@@ -21,6 +21,7 @@ for n, i in enumerate(feature_types):
         absolute_propensity[n].append(0)
 
 for feature_type_index, feature_type in enumerate(feature_types):
+    total_structures=0
     # Using SeqIO.parse will cope with multi-record files
     # A biopython module that can automatically parse uniprot .txt files
     for record in SeqIO.parse(filename, input_format):
@@ -28,6 +29,7 @@ for feature_type_index, feature_type in enumerate(feature_types):
             # feature type refers to what secondary feature we are currently
             # querying.
             if f.type == feature_type:
+                total_structures=total_structures+1
                 sequence_for_propensity_check = f.extract(record.seq)
                 for residue_type_index, residue_type in enumerate(a_names)):
                     for amino_acid_in_feature in sequence_for_propensity_check:
@@ -35,4 +37,9 @@ for feature_type_index, feature_type in enumerate(feature_types):
                             absolute_propensity[feature_type_index][residue_type_index]=absolute_propensity[
                                 feature_type_index][residue_type_index] + 1
     print a_names
+    print "Absolute values"
     print absolute_propensity[feature_type_index]
+    print "Averaged values"
+    averaged_values=[]
+    for i in absolute_propensity[feature_type_index]:
+        averaged_value = (i/sum(absolute_propensity[feature_type_index])/total_structures)
