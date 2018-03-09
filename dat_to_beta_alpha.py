@@ -39,6 +39,7 @@ for feature_type_index, feature_type in enumerate(feature_types):
             if f.type == feature_type:
                 total_structures = total_structures + 1
                 sequence_for_propensity_check = f.extract(record.seq)
+                lengths.append(len(sequence_for_propensity_check))
                 for residue_type_index, residue_type in enumerate(a_names):
                     for amino_acid_in_feature in sequence_for_propensity_check:
                         if str(amino_acid_in_feature) == residue_type:
